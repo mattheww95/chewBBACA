@@ -1,5 +1,9 @@
 # Changelog
 
+# Added
+
+- Added GZIP file input support for fastas
+
 ## 3.3.4 - 2024-03-22
 
 - Improved BLAST exception capturing.
