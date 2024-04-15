@@ -98,7 +98,7 @@ def count_sequences(fasta_file):
     total_seqs : int
         Number of sequences in the FASTA file.
     """
-    with open(fasta_file, 'r') as infile:
+    with fo.get_reader(fasta_file) as infile:
         sequence_headers = [line for line in infile if line.startswith('>')]
         total_seqs = len(sequence_headers)
 
