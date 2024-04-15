@@ -41,7 +41,7 @@ def sequence_generator(input_file):
     """
     # Useful to create the generator
     # Need to exhaust the generator to avoid high memory usage
-    records = SeqIO.parse(input_file, 'fasta')
+    records = SeqIO.parse(fo.get_reader(input_file), 'fasta')
 
     return records
 
