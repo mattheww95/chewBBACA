@@ -272,7 +272,7 @@ def read_file(input_file):
     file_content : str
         Single string with the file content.
     """
-    #with open(input_file, 'r') as infile:
+
     with get_reader(input_file) as infile:
         file_content = infile.read()
 
@@ -443,7 +443,7 @@ def concatenate_files(files, output_file, header=None):
         if header is not None:
             outfile.write(header)
         for file in files:
-            with open(file, 'r') as infile:
+            with get_reader(file) as infile:
                 shutil.copyfileobj(infile, outfile)
 
     return output_file
@@ -510,7 +510,7 @@ def read_tabular(input_file, delimiter='\t'):
         Each sublist has the fields that were separated by
         the defined delimiter.
     """
-    with open(input_file, 'r') as infile:
+    with get_reader(input_file) as infile:
         reader = csv.reader(infile, delimiter=delimiter)
         lines = [line for line in reader]
 
@@ -562,7 +562,7 @@ def is_file_empty_2(file_name):
 def is_file_empty_3(file_name):
     """Check if file is empty by reading first character in it."""
     # open ile in read mode
-    with open(file_name, 'r') as read_obj:
+    with get_reader(file_name) as read_obj:
         # read first character
         one_char = read_obj.read(1)
         # if not fetched then file is empty
@@ -627,7 +627,7 @@ def matching_lines(input_file, pattern):
     matched_lines : list
         List with lines that contain the pattern.
     """
-    with open(input_file, 'r') as infile:
+    with get_reader(input_file) as infile:
         matched_lines = [line for line in infile if pattern in line]
 
     return matched_lines
@@ -652,7 +652,7 @@ def transpose_matrix(input_file, output_directory):
         intermediate files.
     """
     intermediate_files = []
-    with open(input_file, 'r') as infile:
+    with get_reader(input_file) as infile:
         # Get column identifiers
         columns = [c.strip() for c in (infile.__next__()).split('\t')]
         # Divide into smaller sets to avoid loading complete file
@@ -700,7 +700,7 @@ def count_repeated_matrix(matrix_file, ignore_values):
     """
     repeated_counts = {}
     repeated_values = set()
-    with open(matrix_file, 'r') as infile:
+    with get_reader(matrix_file) as infile:
         csv_reader = csv.reader(infile, delimiter='\t')
         header = csv_reader.__next__()
         for i, l in enumerate(csv_reader):
