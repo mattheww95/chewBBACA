@@ -59,7 +59,7 @@ def index_fasta(fasta_file):
     fasta_index : Bio.File._IndexedSeqFileDict
         FASTA file index.
     """
-    fasta_index = SeqIO.index(fasta_file, 'fasta')
+    fasta_index = SeqIO.index(fo.get_reader(fasta_file), 'fasta')
 
     return fasta_index
 
