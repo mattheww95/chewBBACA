@@ -34,8 +34,10 @@ import pandas as pd
 
 try:
     from utils import iterables_manipulation as im
+    from utils import constants as ct
 except ModuleNotFoundError:
     from CHEWBBACA.utils import iterables_manipulation as im
+    from CHEWBBACA.utils import constants as ct
 
 
 def file_basename(file_path, file_extension=True):
@@ -236,6 +238,26 @@ def delete_directory(directory_path, max_retries=5):
 
     return exists
 
+def get_reader(file_in):
+    """Get the appropriate open methond based on a files extension
+
+    Parameters
+    ----------
+    input_file : str
+        Path to the file to read.
+
+    extension: str
+        File extension for determining the correct reading operations
+
+    Returns
+    -------
+    file open method
+
+    """
+    file, extension = os.path.splitext(file_in)
+    if extension in ct.GZIP_EXTENSIONS:
+        return gzip.open(file_in, "rt")
+    return open(file_in, "r")
 
 def read_file(input_file):
     """Read a text file.
@@ -250,7 +272,8 @@ def read_file(input_file):
     file_content : str
         Single string with the file content.
     """
-    with open(input_file, 'r') as infile:
+    #with open(input_file, 'r') as infile:
+    with get_reader(input_file) as infile:
         file_content = infile.read()
 
     return file_content
@@ -272,7 +295,7 @@ def read_lines(input_file, strip=True, num_lines=None):
     lines : list
         List with the lines read from the input file.
     """
-    with open(input_file, 'r') as infile:
+    with get_reader(input_file) as infile:
         if num_lines is None:
             lines = [line for line in infile.readlines()]
         else:

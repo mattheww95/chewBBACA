@@ -93,7 +93,10 @@ GENETIC_CODES_DEFAULT = 11
 CREATESCHEMA_CLUSTERING_NGROUPS = 40
 
 # Valid FASTA file extensions
-FASTA_EXTENSIONS = ['.fasta', '.fna', '.ffn', '.fa', '.fas']
+GZIP_EXTENSIONS = ["gz", "gzip"]
+FASTA_EXTENSIONS = ['.fasta', '.fna', '.ffn', '.fa', '.fas', 
+                    '.fasta.gz', '.fna.gz', '.ffn.gz', '.fa.gz', '.fas.gz',
+                    '.fasta.gzip', '.fna.gzip', '.ffn.gzip', '.fa.gzip', '.fas.gzip']
 
 # Chewie-NS related constants
 HEADERS_GET_ = {'Authorization': None,
