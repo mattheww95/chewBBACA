@@ -36,6 +36,7 @@ def args_fixture(request, tmp_path):
 	 (ta.ALLELECALL_TEST_MODE3, 'data/allelecall_data/test_results/mode3'),
 	 (ta.ALLELECALL_TEST_MODE4, 'data/allelecall_data/test_results/mode4'),
 	 (ta.ALLELECALL_TEST_CDS_DEFAULT, 'data/allelecall_data/test_results/cds_input_mode4'),
+	 (ta.ALLELECALL_TEST_CDS_DEFAULT_GZ, 'data/allelecall_data/test_results/cds_input_mode4'),
 	 (ta.ALLELECALL_TEST_CDS_MODE1, 'data/allelecall_data/test_results/cds_input_mode1'),
 	 (ta.ALLELECALL_TEST_CDS_MODE2, 'data/allelecall_data/test_results/cds_input_mode2'),
 	 (ta.ALLELECALL_TEST_CDS_MODE3, 'data/allelecall_data/test_results/cds_input_mode3'),
