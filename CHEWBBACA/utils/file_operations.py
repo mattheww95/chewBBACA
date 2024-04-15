@@ -25,6 +25,7 @@ import pickle
 import zipfile
 import pathlib
 import urllib.request
+from functools import partial
 from itertools import islice
 from collections import Counter
 from multiprocessing import TimeoutError
@@ -256,8 +257,8 @@ def get_reader(file_in):
     """
     file, extension = os.path.splitext(file_in)
     if extension in ct.GZIP_EXTENSIONS:
-        return gzip.open(file_in, "rt")
-    return open(file_in, "r")
+        return partial(gzip.open, mode="rt")
+    return partial(open, mode="r")
 
 def read_file(input_file):
     """Read a text file.
