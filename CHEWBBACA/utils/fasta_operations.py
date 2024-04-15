@@ -41,7 +41,8 @@ def sequence_generator(input_file):
     """
     # Useful to create the generator
     # Need to exhaust the generator to avoid high memory usage
-    records = SeqIO.parse(fo.get_reader(input_file), 'fasta')
+    with fo.get_reader(input_file) as handle:
+        records = SeqIO.parse(handle, 'fasta')
 
     return records
 
@@ -59,7 +60,8 @@ def index_fasta(fasta_file):
     fasta_index : Bio.File._IndexedSeqFileDict
         FASTA file index.
     """
-    fasta_index = SeqIO.index(fo.get_reader(fasta_file), 'fasta')
+    with fo.get_reader(fasta_file) as handle:
+        fasta_index = SeqIO.index(handle, 'fasta')
 
     return fasta_index
 
