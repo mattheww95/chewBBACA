@@ -67,12 +67,22 @@ ALLELECALL_TEST_CDS_TEMPLATE = ['chewBBACA.py', 'AlleleCall',
 				 				'-o', 'allelecall_results',
 								'--cds-input']
 
+# AlleleCall --cds-input option with gzip input
+ALLELECALL_TEST_CDS_TEMPLATE_GZ = ['chewBBACA.py', 'AlleleCall',
+				 				'-i', 'data/allelecall_data/test_cds_input_gz',
+				 				'-g', 'data/allelecall_data/sagalactiae_schema',
+				 				'-o', 'allelecall_results',
+								'--cds-input']
+
 # AlleleCall --cds-input option
 ALLELECALL_TEST_CDS_DEFAULT = ALLELECALL_TEST_CDS_TEMPLATE[:]
 ALLELECALL_TEST_CDS_MODE1 = ALLELECALL_TEST_CDS_TEMPLATE[:]+['--mode', '1']
 ALLELECALL_TEST_CDS_MODE2 = ALLELECALL_TEST_CDS_TEMPLATE[:]+['--mode', '2']
 ALLELECALL_TEST_CDS_MODE3 = ALLELECALL_TEST_CDS_TEMPLATE[:]+['--mode', '3']
 ALLELECALL_TEST_CDS_MODE4 = ALLELECALL_TEST_CDS_TEMPLATE[:]+['--mode', '4']
+
+# AlleleCall --cds-input option
+ALLELECALL_TEST_CDS_DEFAULT_GZ = ALLELECALL_TEST_CDS_TEMPLATE_GZ[:]
 
 # AlleleCall with genome list
 ALLELECALL_TEST_GENOME_LIST = ['chewBBACA.py', 'AlleleCall',
