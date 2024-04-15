@@ -41,7 +41,7 @@ def sequence_generator(input_file):
     """
     # Useful to create the generator
     # Need to exhaust the generator to avoid high memory usage
-    records = SeqIO.parse(input_file, 'fasta')
+    records = SeqIO.parse(fo.get_reader(input_file), 'fasta')
 
     return records
 
@@ -59,7 +59,8 @@ def index_fasta(fasta_file):
     fasta_index : Bio.File._IndexedSeqFileDict
         FASTA file index.
     """
-    fasta_index = SeqIO.index(fasta_file, 'fasta')
+    
+    fasta_index = SeqIO.index(fo.get_reader(fasta_file), 'fasta')
 
     return fasta_index
 
@@ -98,7 +99,7 @@ def count_sequences(fasta_file):
     total_seqs : int
         Number of sequences in the FASTA file.
     """
-    with open(fasta_file, 'r') as infile:
+    with fo.get_reader(fasta_file) as infile:
         sequence_headers = [line for line in infile if line.startswith('>')]
         total_seqs = len(sequence_headers)
 
